@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Homepage</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	</head>
+	<body>
+		<div id="search">
+			<input id="search-field" type="text" name="search-field"/>
+		</div>
+		<div class="container">
+			<div class="clock-box">
+				<div id="clock"></div>
+			</div>
+			<div class="bookmark-container">
+				<div class="bookmark-set">
+					<div class="bookmark-title">IT Stuff</div>
+					<div class="bookmark-inner-container">
+						<a class="bookmark" href="https://distrowatch.com/" target="_blank">Distro Watch</a>
+						<a class="bookmark" href="https://itsfoss.com/" target="_blank">It's Foss</a>
+						<a class="bookmark" href="https://privacytools.io/" target="_blank">PrivacyTools</a>
+						<a class="bookmark" href="https://www.archlinux.org/" target="_blank">Arch Homepage</a>
+						<a class="bookmark" href="https://security.archlinux.org/" target="_blank">Arch Security</a>
+						<a class="bookmark" href="https://cve.mitre.org/index.html" target="_blank">CVE</a>
+					</div>
+				</div>
+				<div class="bookmark-set">
+					<div class="bookmark-title">Japanese</div>
+					<div class="bookmark-inner-container">
+						<a class="bookmark" href="https://myanimelist.net" target="_blank">MAL</a>
+						<a class="bookmark" href="https://www.pixiv.net/en/" target="_blank">pixiv</a>
+						<a class="bookmark" href="https://www.pixiv.net/en/users/10885193/" target="_blank">pixiv - Lifeline</a>
+						<a class="bookmark" href="https://www.pixiv.net/en/users/12845810/" target="_blank">pixiv - BARD713</a>
+						<a class="bookmark" href="https://www.pixiv.net/en/users/33558705/" target="_blank">pixiv - huashiJW</a>
+					</div>
+				</div>
+				<div class="bookmark-set">
+					<div class="bookmark-title">Social 'n Video</div>
+					<div class="bookmark-inner-container">
+						<a class="bookmark" href="https://twitter.com/" target="_blank">Twitter</a>
+						<a class="bookmark" href="https://www.twitch.tv/" target="_blank">Twitch</a>
+						<a class="bookmark" href="https://www.youtube.com/" target="_blank">YouTube</a>
+						<a class="bookmark" href="https://github.com/" target="_blank">GitHub</a>
+						<a class="bookmark" href="https://www.netflix.com/" target="_blank">Netflix</a>
+					</div>
+				</div>
+				<div class="bookmark-set">
+					<div class="bookmark-title">Reddit</div>
+					<div class="bookmark-inner-container">
+						<a class="bookmark" href="https://reddit.com/r/unixporn" target="_blank">/r/unixporn</a>
+						<a class="bookmark" href="https://reddit.com/r/halo" target="_blank">/r/halo</a>
+						<a class="bookmark" href="https://reddit.com/r/linuxmemes" target="_blank">/r/linuxmemes</a>
+						<a class="bookmark" href="https://reddit.com/r/linuxmasterrace" target="_blank">/r/linuxmasterrace</a>
+						<a class="bookmark" href="https://reddit.com/r/MechanicalKeyboards" target="_blank">/r/mk</a>
+						<a class="bookmark" href="https://reddit.com/r/privacy" target="_blank">/r/privacy</a>
+						<a class="bookmark" href="https://reddit.com/r/thinkpad" target="_blank">/r/thinkpad</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			//Search box
+			document.getElementById("search-field").addEventListener("keydown", event => {
+				if (event.keyCode === 13) {
+					var val = document.getElementById("search-field").value;
+					window.open("https://duckduckgo.com/?t=ffab&q=" + val);
+				}
+			});
+			//Current time and format
+			getTime = () => {
+				let date = new Date(),
+					min = date.getMinutes(),
+					sec = date.getSeconds(),
+					hour = date.getHours();
+
+				return "" +
+					(hour < 10 ? ("0" + hour) : hour) + ":" +
+					(min < 10 ? ("0" + min) : min) + ":" +
+					(sec < 10 ? ("0" + sec) : sec);
+			}
+
+			window.onload = () => {
+				document.getElementById("clock").innerHTML = getTime();
+				setInterval( () => {
+					document.getElementById("clock").innerHTML = getTime();
+				},100);
+			}
+
+			//Shows searchbox
+			document.addEventListener("keydown", event => {
+				if (event.keyCode == 32) { //spacebar to open
+					document.getElementById("search").style.display = "flex";
+					document.getElementById("search-field").focus();
+				} else if (event.keyCode == 27) { //esc to exit
+					document.getElementById("search-field").value = "";
+					document.getElementById("search-field").blur();
+					document.getElementById("search").style.display = "none";
+				}
+			});
+		</script>
+
+	</body>
+</html>
