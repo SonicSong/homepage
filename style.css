@@ -1,11 +1,12 @@
 body {
-	background-image: url("sora-sagano-WA-QRL5wDMw-unsplash.jpg");
+	background-image: url("121867383_p0.jpg");
 	/* source of image https://unsplash.com/photos/WA-QRL5wDMw */
 	background-repeat: no-repeat;
 	background-size: cover;
 	/* background-color: #7A7A7A; */
 	/* background-color: #282c34; */
 	margin: 0px;
+	background-position: bottom;
 }
 
 .container {
@@ -21,7 +22,7 @@ body {
 	font-family: sans-serif;
 	font-size: 4.0rem;
 	color: #ffffff;
-	margin-bottom: .25em;
+	/* margin-bottom: .25em; */
 }
 
 #search {
